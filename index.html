@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluxo de Caixa para Autônomos</title>
+<meta name="description" content="Organize suas receitas e despesas com um guia prático de fluxo de caixa para autônomos.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    padding: 25px 0;
+    border-bottom: 1px solid #263247;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #a3e635;
+}
+
+.hero {
+    padding: 90px 0;
+    background: radial-gradient(circle at 80% 20%, #263b25, #101a2b 50%, #0b1220);
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.tag {
+    color: #a3e635;
+    border: 1px solid #a3e635;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    margin: 25px 0;
+}
+
+.highlight {
+    color: #a3e635;
+}
+
+.hero p {
+    color: #bdc7d6;
+    font-size: 18px;
+    max-width: 650px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 28px;
+    background: #a3e635;
+    color: #17220b;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.btn:hover {
+    background: #bef264;
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 75px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    color: #aebaca;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #142238;
+    border: 1px solid #26364d;
+    padding: 28px;
+    border-radius: 14px;
+}
+
+.card .icon {
+    color: #a3e635;
+    font-size: 30px;
+}
+
+.card h3 {
+    margin: 15px 0 10px;
+}
+
+.card p {
+    color: #aebaca;
+    font-size: 15px;
+}
+
+.about {
+    background: #101b2c;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.about h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    color: #bdc7d6;
+    margin-bottom: 18px;
+}
+
+.benefit {
+    background: #142238;
+    border: 1px solid #26364d;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 12px 0;
+}
+
+.benefit strong {
+    color: #a3e635;
+}
+
+.offer {
+    text-align: center;
+}
+
+.offer-box {
+    max-width: 680px;
+    margin: auto;
+    padding: 45px 25px;
+    background: #142238;
+    border: 1px solid #a3e635;
+    border-radius: 18px;
+}
+
+.offer-box h2 {
+    font-size: 34px;
+    margin: 15px 0;
+}
+
+.price {
+    font-size: 50px;
+    font-weight: 900;
+    color: #a3e635;
+    margin: 20px 0;
+}
+
+.price small {
+    font-size: 15px;
+    color: #bdc7d6;
+    font-weight: normal;
+}
+
+.offer-box p {
+    color: #bdc7d6;
+}
+
+footer {
+    border-top: 1px solid #263247;
+    text-align: center;
+    padding: 25px;
+    color: #8e9bad;
+    font-size: 13px;
+}
+
+@media(max-width: 750px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+
+    .about h2 {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">FLUXO<span>.</span> AUTÔNOMOS</div>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="tag">Organização financeira na prática</span>
+
+            <h1>
+                Seu trabalho merece um dinheiro
+                <span class="highlight">mais organizado.</span>
+            </h1>
+
+            <p>
+                Um guia prático para quem trabalha por conta própria
+                e deseja acompanhar melhor suas receitas, despesas
+                e movimentações financeiras.
+            </p>
+
+            <a class="btn" href="https://pay.kiwify.com.br/R8PlRUT" target="_blank">
+                QUERO ORGANIZAR MEU CAIXA →
+            </a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <h2 class="section-title">
+            Tenha mais clareza sobre seu dinheiro
+        </h2>
+
+        <p class="section-description">
+            Organizar as finanças é um passo importante para
+            entender como o dinheiro circula no seu trabalho.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">↗</div>
+                <h3>Controle suas receitas</h3>
+                <p>
+                    Registre os valores recebidos e acompanhe
+                    melhor as entradas do seu trabalho.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">↘</div>
+                <h3>Organize suas despesas</h3>
+                <p>
+                    Acompanhe os gastos e tenha uma visão mais
+                    clara de para onde seu dinheiro está indo.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">▦</div>
+                <h3>Visualize seu caixa</h3>
+                <p>
+                    Entenda melhor suas movimentações e acompanhe
+                    o equilíbrio entre entradas e saídas.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="container about-content">
+
+        <span class="tag">O que você vai receber</span>
+
+        <h2>
+            Tudo para começar a organizar suas finanças.
+        </h2>
+
+        <p>
+            O material foi pensado para trabalhadores autônomos
+            que desejam desenvolver uma rotina mais organizada
+            de acompanhamento financeiro.
+        </p>
+
+        <div class="benefit">
+            <strong>✓ Guia digital em PDF</strong>
+            <p>Conteúdo sobre fluxo de caixa e organização financeira.</p>
+        </div>
+
+        <div class="benefit">
+            <strong>✓ Planilha bônus</strong>
+            <p>Ferramenta de apoio para registrar receitas e despesas.</p>
+        </div>
+
+        <div class="benefit">
+            <strong>✓ Orientação prática</strong>
+            <p>Um ponto de partida para acompanhar as movimentações do seu trabalho.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="offer">
+    <div class="container">
+
+        <div class="offer-box">
+
+            <span class="tag">Material digital</span>
+
+            <h2>
+                Comece hoje a organizar seu fluxo de caixa.
+            </h2>
+
+            <p>
+                Adquira o guia digital e receba também a
+                planilha bônus.
+            </p>
+
+            <div class="price">
+                R$ 27,90
+                <small>pagamento único</small>
+            </div>
+
+            <a class="btn" href="https://pay.kiwify.com.br/R8PlRUT" target="_blank">
+                COMPRAR AGORA →
+            </a>
+
+            <p style="font-size:12px; margin-top:20px;">
+                Pagamento processado pela Kiwify.
+                Consulte as condições de acesso no checkout.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    © 2026 Fluxo de Caixa para Autônomos.
+    Material educativo.
+</footer>
+
+</body>
+</html>
