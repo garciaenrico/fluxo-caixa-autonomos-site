@@ -1,389 +1,312 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fluxo de Caixa para Autônomos</title>
-<meta name="description" content="Organize suas receitas e despesas com um guia prático de fluxo de caixa para autônomos.">
-
+<meta name="description" content="Método de 7 dias para organizar o dinheiro do seu trabalho. 15 aulas, acesso imediato e garantia de 7 dias.">
+<meta property="og:title" content="Fluxo de Caixa para Autônomos">
+<meta property="og:description" content="Método de 7 dias para organizar o dinheiro do seu trabalho. 15 aulas, acesso imediato e garantia de 7 dias.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0A0A'/%3E%3Crect x='14' y='18' width='30' height='6' rx='3' fill='%23FFFFFF'/%3E%3Crect x='14' y='30' width='22' height='6' rx='3' fill='%23777777'/%3E%3Crect x='14' y='44' width='36' height='8' rx='4' fill='%231A3BFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --bg: #050505;
+  --paper: #FFFFFF;
+  --ink: #0A0A0A;
+  --muted: #56565E;
+  --soft: #B9B9C3;
+  --faint: #8F8F9A;
+  --line: #E9E9EE;
+  --rule: #15151A;
+  --edge: #34343C;
+  --blue: #1A3BFF;
 }
-
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-    font-family: Arial, sans-serif;
-    background: #0b1220;
-    color: #fff;
-    line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--rule) 31px, var(--rule) 32px);
+  color: #FFFFFF;
+  font-family: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+svg { display: block; }
+
+.page { width: 100%; max-width: 440px; margin: 0 auto; padding: 36px 20px 48px; }
+
+/* Livro 3D */
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 0 0;
+  perspective: 1100px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.book {
+  --rx: 7deg;
+  --ry: -30deg;
+  position: relative;
+  width: 168px;
+  height: 224px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .3s ease-out;
+  animation: enter 1.1s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+@keyframes enter {
+  from { transform: rotateX(14deg) rotateY(-85deg); }
+  to   { transform: rotateX(7deg) rotateY(-30deg); }
+}
+.face { position: absolute; backface-visibility: hidden; }
+.front {
+  width: 168px; height: 224px; left: 0; top: 0;
+  transform: translateZ(13px);
+  border-radius: 2px 6px 6px 2px;
+  overflow: hidden;
+  background: var(--blue);
+}
+.front svg { width: 100%; height: 100%; }
+.front::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.35) 0, rgba(0,0,0,.35) 2px, rgba(255,255,255,.22) 3px, transparent 9px, transparent 12px, rgba(0,0,0,.12) 13px, transparent 15px),
+    linear-gradient(115deg, rgba(255,255,255,.28) 0, rgba(255,255,255,.06) 30%, transparent 46%);
+  pointer-events: none;
+}
+.back {
+  width: 168px; height: 224px; left: 0; top: 0;
+  transform: rotateY(180deg) translateZ(13px);
+  background: #1C1C22;
+  border-radius: 6px 2px 2px 6px;
+}
+.spine {
+  width: 26px; height: 224px; left: calc(50% - 13px); top: 0;
+  transform: rotateY(-90deg) translateZ(84px);
+  background: linear-gradient(90deg, #E4E4EA 0, #FFFFFF 50%, #E4E4EA 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.spine span {
+  writing-mode: vertical-rl;
+  font-size: 11px; font-weight: 800; letter-spacing: .02em;
+  color: var(--ink); white-space: nowrap;
+}
+.spine::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: var(--blue); }
+.pages {
+  width: 26px; height: 218px; left: calc(50% - 13px); top: 3px;
+  transform: rotateY(90deg) translateZ(84px);
+  background: repeating-linear-gradient(90deg, #fff 0, #fff 1.5px, #D5D5DA 1.5px, #D5D5DA 2.5px);
+}
+.top {
+  width: 164px; height: 26px; left: 2px; top: calc(50% - 13px);
+  transform: rotateX(90deg) translateZ(112px);
+  background: repeating-linear-gradient(180deg, #fff 0, #fff 1.5px, #D5D5DA 1.5px, #D5D5DA 2.5px);
+}
+.floor {
+  width: 190px; height: 20px; margin-top: 30px;
+  background: radial-gradient(ellipse at center, rgba(26,59,255,.55) 0, rgba(26,59,255,.18) 45%, transparent 72%);
+  filter: blur(3px);
 }
 
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
+/* Intro */
+.intro { text-align: center; margin-top: 18px; }
+h1 { margin: 0; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.08; font-weight: 900; letter-spacing: -0.03em; }
+.bio { margin: 12px auto 0; max-width: 32ch; color: var(--soft); font-size: 1.0625rem; }
+
+/* Links */
+.links { margin-top: 28px; display: grid; gap: 14px; }
+.link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--paper);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--edge);
+  transition: transform .12s ease, box-shadow .12s ease;
 }
+.link:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--edge); }
+.link:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--edge); }
+.link:focus-visible, summary:focus-visible { outline: 3px solid var(--paper); outline-offset: 4px; }
+.thumb { flex: none; width: 46px; height: 61px; border-radius: 3px 5px 5px 3px; overflow: hidden; }
+.glyph { flex: none; width: 46px; height: 46px; border-radius: 6px; background: var(--paper); border: 2px solid var(--ink); display: grid; place-items: center; }
+.text { flex: 1; min-width: 0; }
+.text strong { display: block; font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+.text span { display: block; font-size: 0.9rem; color: var(--muted); margin-top: 2px; }
+.chev { flex: none; }
 
-header {
-    padding: 25px 0;
-    border-bottom: 1px solid #263247;
-}
+.link.main { box-shadow: 5px 5px 0 var(--blue); padding: 14px; }
+.link.main:hover { box-shadow: 2px 2px 0 var(--blue); }
+.link.main:active { box-shadow: 0 0 0 var(--blue); }
+.link.main .text strong { font-size: 1.1875rem; }
 
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
+/* Expansível: 7 dias */
+details { background: var(--paper); color: var(--ink); border: 2px solid var(--paper); border-radius: 10px; box-shadow: 4px 4px 0 var(--edge); }
+summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 8px; }
+summary::-webkit-details-marker { display: none; }
+summary .chev { transition: transform .2s ease; }
+details[open] summary .chev { transform: rotate(90deg); }
+.days { margin: 0; padding: 4px 18px 14px; list-style: none; counter-reset: dia; }
+.days li { counter-increment: dia; display: grid; grid-template-columns: 30px 1fr; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 0.97rem; line-height: 1.35; }
+.days li::before { content: counter(dia); font-weight: 900; font-size: 1.15rem; letter-spacing: -0.02em; line-height: 1.15; color: var(--blue); }
+.days li:first-child { border-top: 2px solid var(--ink); }
+.days-note { margin: 0; padding: 0 18px 16px; font-size: 0.9rem; color: var(--muted); }
 
-.logo span {
-    color: #a3e635;
-}
+/* Confiança */
+.trust { margin: 26px 0 0; padding: 0; list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; color: var(--soft); text-align: center; }
+.trust li { display: flex; align-items: center; gap: 7px; }
+.trust li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); flex: none; }
 
-.hero {
-    padding: 90px 0;
-    background: radial-gradient(circle at 80% 20%, #263b25, #101a2b 50%, #0b1220);
-}
+footer { margin-top: 30px; text-align: center; font-size: 0.82rem; color: var(--faint); }
+footer p { margin: 0 auto; max-width: 38ch; }
 
-.hero-content {
-    max-width: 750px;
-}
-
-.tag {
-    color: #a3e635;
-    border: 1px solid #a3e635;
-    padding: 7px 14px;
-    border-radius: 30px;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: clamp(38px, 6vw, 65px);
-    line-height: 1.1;
-    margin: 25px 0;
-}
-
-.highlight {
-    color: #a3e635;
-}
-
-.hero p {
-    color: #bdc7d6;
-    font-size: 18px;
-    max-width: 650px;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 16px 28px;
-    background: #a3e635;
-    color: #17220b;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: .2s;
-}
-
-.btn:hover {
-    background: #bef264;
-    transform: translateY(-2px);
-}
-
-section {
-    padding: 75px 0;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.section-description {
-    color: #aebaca;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 40px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.card {
-    background: #142238;
-    border: 1px solid #26364d;
-    padding: 28px;
-    border-radius: 14px;
-}
-
-.card .icon {
-    color: #a3e635;
-    font-size: 30px;
-}
-
-.card h3 {
-    margin: 15px 0 10px;
-}
-
-.card p {
-    color: #aebaca;
-    font-size: 15px;
-}
-
-.about {
-    background: #101b2c;
-}
-
-.about-content {
-    max-width: 800px;
-    margin: auto;
-}
-
-.about h2 {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.about p {
-    color: #bdc7d6;
-    margin-bottom: 18px;
-}
-
-.benefit {
-    background: #142238;
-    border: 1px solid #26364d;
-    border-radius: 10px;
-    padding: 18px;
-    margin: 12px 0;
-}
-
-.benefit strong {
-    color: #a3e635;
-}
-
-.offer {
-    text-align: center;
-}
-
-.offer-box {
-    max-width: 680px;
-    margin: auto;
-    padding: 45px 25px;
-    background: #142238;
-    border: 1px solid #a3e635;
-    border-radius: 18px;
-}
-
-.offer-box h2 {
-    font-size: 34px;
-    margin: 15px 0;
-}
-
-.price {
-    font-size: 50px;
-    font-weight: 900;
-    color: #a3e635;
-    margin: 20px 0;
-}
-
-.price small {
-    font-size: 15px;
-    color: #bdc7d6;
-    font-weight: normal;
-}
-
-.offer-box p {
-    color: #bdc7d6;
-}
-
-footer {
-    border-top: 1px solid #263247;
-    text-align: center;
-    padding: 25px;
-    color: #8e9bad;
-    font-size: 13px;
-}
-
-@media(max-width: 750px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding: 65px 0;
-    }
-
-    .section-title {
-        font-size: 29px;
-    }
-
-    .about h2 {
-        font-size: 30px;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .book { animation: none; transition: none; }
+  .link, summary .chev { transition: none; }
 }
 </style>
 </head>
-
 <body>
 
-<header>
-    <div class="container">
-        <div class="logo">FLUXO<span>.</span> AUTÔNOMOS</div>
+<!-- Capa do ebook, desenhada uma vez e reutilizada -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="capa" viewBox="0 0 120 160">
+    <rect width="120" height="160" fill="#1A3BFF"/>
+    <rect width="9" height="160" fill="#0A0A0A"/>
+    <text x="21" y="40" font-family="'Schibsted Grotesk', sans-serif" font-weight="900" font-size="17" fill="#FFFFFF">Fluxo de</text>
+    <text x="21" y="60" font-family="'Schibsted Grotesk', sans-serif" font-weight="900" font-size="17" fill="#FFFFFF">caixa para</text>
+    <text x="21" y="80" font-family="'Schibsted Grotesk', sans-serif" font-weight="900" font-size="17" fill="#FFFFFF">autônomos</text>
+    <text x="21" y="100" font-family="'Schibsted Grotesk', sans-serif" font-weight="500" font-size="8" fill="#DCE2FF">Método de 7 dias</text>
+    <rect x="21" y="116" width="62" height="5" rx="2.5" fill="#FFFFFF"/>
+    <rect x="21" y="127" width="44" height="5" rx="2.5" fill="#0A0A0A"/>
+    <rect x="21" y="139" width="84" height="9" rx="4.5" fill="#FFFFFF"/>
+  </symbol>
+</svg>
+
+<main class="page">
+
+  <div class="stage" id="stage" aria-label="Capa do ebook Fluxo de Caixa para Autônomos">
+    <div class="book" id="book">
+      <div class="face front"><svg viewBox="0 0 120 160" role="img" aria-label="Capa do ebook"><use href="#capa"/></svg></div>
+      <div class="face back"></div>
+      <div class="face spine"><span>Fluxo de Caixa para Autônomos</span></div>
+      <div class="face pages"></div>
+      <div class="face top"></div>
     </div>
-</header>
+    <div class="floor" aria-hidden="true"></div>
+  </div>
 
-<main>
+  <header class="intro">
+    <h1>Fluxo de Caixa para Autônomos</h1>
+    <p class="bio">Método de 7 dias para organizar o dinheiro do seu trabalho. 15 aulas, acesso imediato e garantia de 7 dias.</p>
+  </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <span class="tag">Organização financeira na prática</span>
+  <nav class="links" aria-label="Links">
 
-            <h1>
-                Seu trabalho merece um dinheiro
-                <span class="highlight">mais organizado.</span>
-            </h1>
+    <a class="link main" href="https://pay.kiwify.com.br/R8PlRUT" rel="noopener">
+      <svg class="thumb" viewBox="0 0 120 160" aria-hidden="true"><use href="#capa"/></svg>
+      <span class="text">
+        <strong>Quero o método</strong>
+        <span>R$ 27,90, pagamento único</span>
+      </span>
+      <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
 
-            <p>
-                Um guia prático para quem trabalha por conta própria
-                e deseja acompanhar melhor suas receitas, despesas
-                e movimentações financeiras.
-            </p>
+    <details>
+      <summary>
+        <span class="glyph" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </span>
+        <span class="text">
+          <strong>O que você aprende</strong>
+          <span>Um passo por dia, durante 7 dias</span>
+        </span>
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </summary>
+      <ol class="days">
+        <li><span>Separe o dinheiro pessoal do profissional</span></li>
+        <li><span>Descubra quanto custa manter seu trabalho</span></li>
+        <li><span>Monte seu fluxo de caixa</span></li>
+        <li><span>Defina quanto você pode retirar</span></li>
+        <li><span>Crie reservas para impostos e imprevistos</span></li>
+        <li><span>Calcule preços sem trabalhar no prejuízo</span></li>
+        <li><span>Crie sua rotina financeira semanal</span></li>
+      </ol>
+      <p class="days-note">Mais exemplo completo, aula sobre MEI, plano para mês no vermelho, mensagens de cobrança prontas e plano de 90 dias.</p>
+    </details>
 
-            <a class="btn" href="https://pay.kiwify.com.br/R8PlRUT" target="_blank">
-                QUERO ORGANIZAR MEU CAIXA →
-            </a>
-        </div>
-    </div>
-</section>
+    <a class="link" href="https://www.instagram.com/garcia07k_/" rel="noopener">
+      <span class="glyph" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.8" fill="#0A0A0A"/></svg>
+      </span>
+      <span class="text">
+        <strong>Fale comigo no Instagram</strong>
+        <span>@garcia07k_</span>
+      </span>
+      <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
 
-<section>
-    <div class="container">
+  </nav>
 
-        <h2 class="section-title">
-            Tenha mais clareza sobre seu dinheiro
-        </h2>
+  <ul class="trust">
+    <li>Acesso imediato</li>
+    <li>Pix, cartão ou boleto</li>
+    <li>Garantia de 7 dias</li>
+  </ul>
 
-        <p class="section-description">
-            Organizar as finanças é um passo importante para
-            entender como o dinheiro circula no seu trabalho.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">↗</div>
-                <h3>Controle suas receitas</h3>
-                <p>
-                    Registre os valores recebidos e acompanhe
-                    melhor as entradas do seu trabalho.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">↘</div>
-                <h3>Organize suas despesas</h3>
-                <p>
-                    Acompanhe os gastos e tenha uma visão mais
-                    clara de para onde seu dinheiro está indo.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icon">▦</div>
-                <h3>Visualize seu caixa</h3>
-                <p>
-                    Entenda melhor suas movimentações e acompanhe
-                    o equilíbrio entre entradas e saídas.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="about">
-    <div class="container about-content">
-
-        <span class="tag">O que você vai receber</span>
-
-        <h2>
-            Tudo para começar a organizar suas finanças.
-        </h2>
-
-        <p>
-            O material foi pensado para trabalhadores autônomos
-            que desejam desenvolver uma rotina mais organizada
-            de acompanhamento financeiro.
-        </p>
-
-        <div class="benefit">
-            <strong>✓ Guia digital em PDF</strong>
-            <p>Conteúdo sobre fluxo de caixa e organização financeira.</p>
-        </div>
-
-        <div class="benefit">
-            <strong>✓ Planilha bônus</strong>
-            <p>Ferramenta de apoio para registrar receitas e despesas.</p>
-        </div>
-
-        <div class="benefit">
-            <strong>✓ Orientação prática</strong>
-            <p>Um ponto de partida para acompanhar as movimentações do seu trabalho.</p>
-        </div>
-
-    </div>
-</section>
-
-<section class="offer">
-    <div class="container">
-
-        <div class="offer-box">
-
-            <span class="tag">Material digital</span>
-
-            <h2>
-                Comece hoje a organizar seu fluxo de caixa.
-            </h2>
-
-            <p>
-                Adquira o guia digital e receba também a
-                planilha bônus.
-            </p>
-
-            <div class="price">
-                R$ 27,90
-                <small>pagamento único</small>
-            </div>
-
-            <a class="btn" href="https://pay.kiwify.com.br/R8PlRUT" target="_blank">
-                COMPRAR AGORA →
-            </a>
-
-            <p style="font-size:12px; margin-top:20px;">
-                Pagamento processado pela Kiwify.
-                Consulte as condições de acesso no checkout.
-            </p>
-
-        </div>
-
-    </div>
-</section>
+  <footer>
+    <p>Material educativo. Não substitui orientação contábil ou financeira individual, e não promete ganho de dinheiro.</p>
+  </footer>
 
 </main>
 
-<footer>
-    © 2026 Fluxo de Caixa para Autônomos.
-    Material educativo.
-</footer>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  var stage = document.getElementById('stage');
+  var book = document.getElementById('book');
+  var BASE_X = 7, BASE_Y = -30;
 
+  function tilt(e) {
+    var r = stage.getBoundingClientRect();
+    var px = (e.clientX - r.left) / r.width - 0.5;   // -0.5 a 0.5
+    var py = (e.clientY - r.top) / r.height - 0.5;
+    var ry = BASE_Y + px * 70;
+    var rx = BASE_X - py * 22;
+    ry = Math.max(-75, Math.min(15, ry));
+    book.style.setProperty('--ry', ry + 'deg');
+    book.style.setProperty('--rx', rx + 'deg');
+  }
+  function rest() {
+    book.style.setProperty('--ry', BASE_Y + 'deg');
+    book.style.setProperty('--rx', BASE_X + 'deg');
+    stage.style.cursor = 'grab';
+  }
+
+  stage.addEventListener('pointermove', tilt);
+  stage.addEventListener('pointerdown', function () { stage.style.cursor = 'grabbing'; });
+  stage.addEventListener('pointerup', function () { stage.style.cursor = 'grab'; });
+  stage.addEventListener('pointerleave', rest);
+  stage.addEventListener('pointercancel', rest);
+})();
+</script>
 </body>
 </html>
