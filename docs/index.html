@@ -192,6 +192,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   ttq.load('DBU8NTRC77U4UD9J3UR0');
   ttq.page();
+
+  // Visualização do produto
+  ttq.track('ViewContent', {
+    contents: [{
+      content_id: 'fluxo-caixa-autonomos',
+      content_type: 'product',
+      content_name: 'Fluxo de Caixa para Autônomos'
+    }],
+    value: 27.90,
+    currency: 'BRL'
+  });
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
@@ -319,6 +330,26 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   stage.addEventListener('pointerup', function () { stage.style.cursor = 'grab'; });
   stage.addEventListener('pointerleave', rest);
   stage.addEventListener('pointercancel', rest);
+})();
+</script>
+<script>
+(function () {
+  var checkoutButton = document.querySelector('.link.main');
+  if (!checkoutButton) return;
+
+  checkoutButton.addEventListener('click', function () {
+    if (typeof window.ttq !== 'undefined') {
+      window.ttq.track('InitiateCheckout', {
+        contents: [{
+          content_id: 'fluxo-caixa-autonomos',
+          content_type: 'product',
+          content_name: 'Fluxo de Caixa para Autônomos'
+        }],
+        value: 27.90,
+        currency: 'BRL'
+      });
+    }
+  });
 })();
 </script>
 </body>
